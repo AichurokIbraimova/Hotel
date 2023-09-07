@@ -15,4 +15,5 @@ class AppColors {
   static const textForm = Color.fromRGBO(246, 246, 249, 1);
   static const label = Color.fromRGBO(169, 171, 183, 1);
   static const nomer = Color(0xffA9ABB7);
+   static const oplata = Color.fromRGBO(13, 114, 255, 1);
 }

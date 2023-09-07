@@ -5,6 +5,7 @@ class AssetsImages {
   static const image2Png = 'assets/images/image2.png';
   static const image3Png = 'assets/images/image3.png';
   static const onePng = 'assets/images/one.png';
+  static const partyPopperPng = 'assets/images/Party Popper.png';
   static const tickSquarePng = 'assets/images/tick-square.png';
 }
 

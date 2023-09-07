@@ -48,6 +48,17 @@ class AppTexts {
   static const srok = 'Срок действия загранпаспорта';
   static const second = 'Второй турист ';
   static const addtourist = 'Добавить туриста';
-  // static const name = 'Имя';
-  // static const name = 'Имя';
+  static const tur = 'Тур';
+  static const topSbor = 'Топливный сбор';
+  static const serSbor = 'Сервисный сбор';
+  static const oplata = 'К оплате';
+  static const oplatit = 'Оплатить 198 036 ₽';
+  static const price1 = '186 600 ₽';
+  static const price2 = '9 300 ₽';
+    static const price3 = '2 136 ₽';
+  static const price4 = '198 036 ₽';
+    static const zakaz = 'Заказ оплачен';
+  static const prinyat = 'Ваш заказ принят в работу';
+    static const podtverj = 'Подтверждение заказа №104893 может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление.';
+  static const super1 = 'Супер!';
 }

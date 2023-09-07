@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tz2/carousel_widget.dart';
+import 'package:tz2/models/hotel_model.dart';
 import 'package:tz2/room_page.dart';
+import 'package:tz2/services/api_service.dart';
 import 'package:tz2/theme.dart';
 import 'package:tz2/theme/app_colors.dart';
 import 'package:tz2/theme/app_text_styles.dart';
@@ -14,182 +16,212 @@ class HotelPage extends StatefulWidget {
 }
 
 class _HotelPageState extends State<HotelPage> {
+  HotelModel? hotelModel;
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  void getData() async {
+    hotelModel = await ApiService().getUsers();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.cont,
       appBar: AppBar(
-        backgroundColor:AppColors.white,
+        backgroundColor: AppColors.white,
         centerTitle: true,
-        title: const Text(AppTexts.hotel,
-        style: TextStyles.hotel,),
+        title: const Text(
+          AppTexts.hotel,
+          style: TextStyles.hotel,
+        ),
+        elevation: 0,
       ),
-      body: Container(
-        width: 375,
-        height: 530,
-        color: AppColors.cont,
-        child: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            width: double.infinity,
-            color: AppColors.white,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const CarouselWidget(
-                  urls: [
-                    "https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Priv%C3%A9_by_Belek_Club_House.jpg",
-                    "https://deluxe.voyage/useruploads/articles/The_Makadi_Spa_Hotel_02.jpg",
-                    "https://deluxe.voyage/useruploads/articles/article_1eb0a64d00.jpg",
-                  ],
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Row(
-                  children: [
-                       Container(
-                      width: 150,
-                      height: 30,
-                      
-                      child:  const Row(
+      body: hotelModel == null
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : Container(
+              width: 375,
+              height: 530,
+              color: AppColors.cont,
+              child: SingleChildScrollView(
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  width: double.infinity,
+                  color: AppColors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const CarouselWidget(
+                        urls: [
+                          "https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Priv%C3%A9_by_Belek_Club_House.jpg",
+                          "https://deluxe.voyage/useruploads/articles/The_Makadi_Spa_Hotel_02.jpg",
+                          "https://deluxe.voyage/useruploads/articles/article_1eb0a64d00.jpg",
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Row(
                         children: [
-                          Icon(
-                            Icons.star,
-                            color: AppColors.star,
-                          ),
-                          Text(
-                            AppTexts.great,
-                            style: TextStyles.great,
-                            
-                              
-                            
+                          Container(
+                            width: 150,
+                            height: 30,
+                            // ignore: sort_child_properties_last
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  Icons.star,
+                                  color: AppColors.star,
+                                ),
+                                Text(
+                                  hotelModel!.ratingName,
+                                  style: TextStyles.great,
+                                ),
+                              ],
+                            ),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: AppColors.star),
                           ),
                         ],
                       ),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: AppColors.star),
-                    ),
-                  ],
-                ),
-                const Text(
-                  AppTexts.makadi,
-                  style: TextStyles.makadi,
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                const Text(
-                  AppTexts.madinat,
-                  style: TextStyles.madinat),
-              
-                const SizedBox(
-                  height: 10,
-                ),
-                const Row(
-                  children:  [
-                    Text(
-                      AppTexts.ot,
-                      style: TextStyles.ot,
-                    ),
-                    Text(
-                     AppTexts.zaTur,
-                      style: TextStyles.zaTur,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const Text(AppTexts.obOtele, style: TextStyles.obOtele),
-                SizedBox(height: 8,),
-                
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                     InkWell(
-                      onTap: (){
-                        
-                      },
-                       child: Text(
-                        AppTexts.thirdL,
-                        style: TextStyles.zaTur,
-                                         ),
-                     ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      AppTexts.wifi,
-                      style: TextStyles.zaTur,
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                   
-                  ],
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                const Text(
-                    AppTexts.vip,
-                    style: TextStyles.vip,),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  color: AppColors.cont1,
-                  child: const Column(
-                    children: [
-                      ContWidget(
-                        image: 'assets/images/emoji-happy.png',
-                        text: AppTexts.udobstva,
+                      Text(
+                        hotelModel!.name,
+                        style: TextStyles.makadi,
                       ),
-                      Divider(
-                          indent: 20,
-                          endIndent: 30,
-                          color:AppColors.divider),
-                      ContWidget(
-                        image: 'assets/images/close-square.png',
-                        text: AppTexts.chtovkl,
+                      const SizedBox(
+                        height: 8,
                       ),
-                      Divider(
-                        indent: 20,
-                        endIndent: 30,
-                        color: AppColors.divider
+                      Text(hotelModel!.adress, style: TextStyles.madinat),
+                      const SizedBox(
+                        height: 10,
                       ),
-                      ContWidget(
-                        image: 'assets/images/tick-square.png',
-                        text: AppTexts.chtonevkl,
+                      Row(
+                        children: [
+                          Text(
+                            hotelModel!.minimalPrice.toString(),
+                            style: TextStyles.ot,
+                          ),
+                          Text(
+                            hotelModel!.priceForIt,
+                            style: TextStyles.zaTur,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      const Text(AppTexts.obOtele, style: TextStyles.obOtele),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: [
+                          ...hotelModel!.aboutTheHotel.peculiarities.map(
+                            (e) => Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                  color: AppColors.cont1,
+                                  borderRadius: BorderRadius.circular(4)),
+                              child:
+                                  Text(e.toString(), style: TextStyles.zaTur),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {},
+                            child: const Text(
+                              AppTexts.thirdL,
+                              style: TextStyles.zaTur,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          const Text(
+                            AppTexts.wifi,
+                            style: TextStyles.zaTur,
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Text(
+                        hotelModel!.aboutTheHotel.description,
+                        style: TextStyles.vip,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        color: AppColors.cont1,
+                        child: const Column(
+                          children: [
+                            ContWidget(
+                              image: 'assets/images/emoji-happy.png',
+                              text: AppTexts.udobstva,
+                            ),
+                            Divider(
+                                indent: 20,
+                                endIndent: 30,
+                                color: AppColors.divider),
+                            ContWidget(
+                              image: 'assets/images/close-square.png',
+                              text: AppTexts.chtovkl,
+                            ),
+                            Divider(
+                                indent: 20,
+                                endIndent: 30,
+                                color: AppColors.divider),
+                            ContWidget(
+                              image: 'assets/images/tick-square.png',
+                              text: AppTexts.chtonevkl,
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      CustomButton(
+                        text: AppTexts.kvyboru,
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const RoomPage()));
+                        },
+                        title: hotelModel!.name.toString(),
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 8,
-                ),
-                CustomButton(text: AppTexts.kvyboru, onPressed: () { 
-Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const RoomPage()));
-                 },),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
     );
   }
 }
 
 class CustomButton extends StatelessWidget {
   final String text;
-  final void Function() onPressed;
+  final String title;
+  final void Function()? onPressed;
   const CustomButton({
-    super.key, required this.text, required this.onPressed,
+    super.key,
+    required this.text,
+    this.onPressed,
+    required this.title,
   });
 
   @override
@@ -197,25 +229,16 @@ class CustomButton extends StatelessWidget {
     return Column(
       children: [
         Container(
-         
-            color: AppColors.white,
-            
+          color: AppColors.white,
           width: double.infinity,
-          
           child: ElevatedButton(
-            
             style: ElevatedButton.styleFrom(
-              
               backgroundColor: AppColors.textMadinat,
-              
-              
-             
             ),
             onPressed: onPressed,
-  
-            child:  Text(text,
-            style: TextStyles.kvyboru,
-            
+            child: Text(
+              text,
+              style: TextStyles.kvyboru,
             ),
           ),
         ),

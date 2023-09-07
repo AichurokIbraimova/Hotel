@@ -78,11 +78,11 @@ class TextStyles {
       fontWeight: FontWeight.w400,
       color: AppColors.nomer,
       fontFamily: 'SF Pro Display');
-  // static const TextStyle vip = TextStyle(
-  //     fontSize: 16,
-  //     fontWeight: FontWeight.w400,
-  //     color: AppColors.black,
-  //     fontFamily: 'SF Pro Display');
+  static const TextStyle oplata = TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+      color: AppColors.oplata,
+      fontFamily: 'SF Pro Display');
   // static const TextStyle vip = TextStyle(
   //     fontSize: 16,
   //     fontWeight: FontWeight.w400,
