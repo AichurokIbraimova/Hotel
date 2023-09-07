@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:tz2/carousel_widget.dart';
 import 'package:tz2/room_page.dart';
 import 'package:tz2/theme.dart';
+import 'package:tz2/theme/app_colors.dart';
+import 'package:tz2/theme/app_text_styles.dart';
+import 'package:tz2/theme/app_texts.dart';
 
 class HotelPage extends StatefulWidget {
   const HotelPage({super.key});
@@ -14,20 +17,22 @@ class _HotelPageState extends State<HotelPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF6F6F9),
+      backgroundColor: AppColors.cont,
       appBar: AppBar(
-        backgroundColor: const Color(0xffFFFFFF),
-        title: const Text('Отель'),
+        backgroundColor:AppColors.white,
+        centerTitle: true,
+        title: const Text(AppTexts.hotel,
+        style: TextStyles.hotel,),
       ),
       body: Container(
         width: 375,
         height: 530,
-        color: const Color(0xffF6F6F9),
+        color: AppColors.cont,
         child: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.all(16),
             width: double.infinity,
-            color: Colors.white,
+            color: AppColors.white,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -43,131 +48,134 @@ class _HotelPageState extends State<HotelPage> {
                 ),
                 Row(
                   children: [
-                    Container(
+                       Container(
                       width: 150,
                       height: 30,
-                      // color: Color(0xffFFA800) ,
-                      child: const Row(
+                      
+                      child:  const Row(
                         children: [
                           Icon(
                             Icons.star,
-                            color: Color.fromRGBO(255, 199, 0, 0.20),
+                            color: AppColors.star,
                           ),
                           Text(
-                            '5 Превосходно',
-                            style: TextStyle(
-                              color: Color(0xffFFA800),
-                            ),
+                            AppTexts.great,
+                            style: TextStyles.great,
+                            
+                              
+                            
                           ),
                         ],
                       ),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                          color: const Color.fromRGBO(255, 199, 0, 0.20)),
+                          borderRadius: BorderRadius.circular(5),
+                          color: AppColors.star),
                     ),
                   ],
                 ),
-                Text(
-                  'Steigenberger Makadi',
-                  style: theme.textTheme.bodyLarge,
+                const Text(
+                  AppTexts.makadi,
+                  style: TextStyles.makadi,
                 ),
                 const SizedBox(
                   height: 8,
                 ),
                 const Text(
-                  'Madinat Makadi, Safaga Road, Makadi Bay, Египет',
-                  style: TextStyle(color: Color(0xff0D72FF)),
-                ),
+                  AppTexts.madinat,
+                  style: TextStyles.madinat),
+              
                 const SizedBox(
                   height: 10,
                 ),
-                Row(
-                  children: [
+                const Row(
+                  children:  [
                     Text(
-                      'от 134 673 ₽',
-                      style: theme.textTheme.bodyLarge
-                          ?.copyWith(fontWeight: FontWeight.w600),
+                      AppTexts.ot,
+                      style: TextStyles.ot,
                     ),
                     Text(
-                      'за тур с перелётом',
-                      style: theme.textTheme.bodyMedium
-                          ?.copyWith(color: const Color(0xff828796)),
+                     AppTexts.zaTur,
+                      style: TextStyles.zaTur,
                     ),
                   ],
                 ),
                 const SizedBox(
                   height: 16,
                 ),
-               
-                Text('Об отеле', style: theme.textTheme.bodyLarge),
+                const Text(AppTexts.obOtele, style: TextStyles.obOtele),
+                SizedBox(height: 8,),
                 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(
-                      '30 км до аэропорта',
-                      style: theme.textTheme.bodyMedium
-                          ?.copyWith(color: const Color(0xff828796)),
-                    ),
+                     InkWell(
+                      onTap: (){
+                        
+                      },
+                       child: Text(
+                        AppTexts.thirdL,
+                        style: TextStyles.zaTur,
+                                         ),
+                     ),
                     const SizedBox(
-                      width: 40,
+                      width: 20,
                     ),
                     Text(
-                      '1 км до пляжа',
-                      style: theme.textTheme.bodyMedium
-                          ?.copyWith(color: const Color(0xff828796)),
+                      AppTexts.wifi,
+                      style: TextStyles.zaTur,
                     ),
                     const SizedBox(
                       height: 16,
                     ),
+                   
                   ],
                 ),
                 const SizedBox(
                   height: 16,
                 ),
                 const Text(
-                    'Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!'),
+                    AppTexts.vip,
+                    style: TextStyles.vip,),
                 const SizedBox(
                   height: 20,
                 ),
-                Container(color: const Color(0xffFBFBFC),
-          
-          
+                Container(
+                  color: AppColors.cont1,
                   child: const Column(
                     children: [
-                      ContWidget(image: 'assets/images/emoji-happy.png', text: 'Удобства',),
-                       Divider(indent: 20, endIndent: 30, color: Color.fromRGBO(130
-                       , 135, 150, 0.15)),
-                       ContWidget(image: 'assets/images/close-square.png', text: 'Что включено',),
-                         Divider(indent: 20, endIndent: 30, color: Color.fromRGBO(130, 135, 150, 0.15),),
-                        ContWidget(
-                        image: 'assets/images/tick-square.png',
-                        text: 'Что не включено',
+                      ContWidget(
+                        image: 'assets/images/emoji-happy.png',
+                        text: AppTexts.udobstva,
                       ),
-          
-                     
+                      Divider(
+                          indent: 20,
+                          endIndent: 30,
+                          color:AppColors.divider),
+                      ContWidget(
+                        image: 'assets/images/close-square.png',
+                        text: AppTexts.chtovkl,
+                      ),
+                      Divider(
+                        indent: 20,
+                        endIndent: 30,
+                        color: AppColors.divider
+                      ),
+                      ContWidget(
+                        image: 'assets/images/tick-square.png',
+                        text: AppTexts.chtonevkl,
+                      ),
                     ],
                   ),
-                  
                 ),
-                SizedBox(height: 8,),
-                Column(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      color: Colors.white,
-                      child: ElevatedButton(style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue,
-             // maximumSize: Size.fromHeight(),
-            ),
-              onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const RoomPage() ));
-                     }, 
-                     child: const Text('К выбору номера'),),
-                    ),
-                  ],
+                const SizedBox(
+                  height: 8,
                 ),
-            
+                CustomButton(text: AppTexts.kvyboru, onPressed: () { 
+Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RoomPage()));
+                 },),
               ],
             ),
           ),
@@ -177,44 +185,83 @@ class _HotelPageState extends State<HotelPage> {
   }
 }
 
-class ContWidget extends StatelessWidget {
-  final String image;
+class CustomButton extends StatelessWidget {
   final String text;
-  const ContWidget({
-    super.key, required this.image, required this.text,
+  final void Function() onPressed;
+  const CustomButton({
+    super.key, required this.text, required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: [
-          Row(
-            children: [
-              Image.asset(image),
-                
-              Padding(
-                padding: const EdgeInsets.only(left: 10,right: 100),
-                child: Row(
-    children: [
-      Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(text),
-          const Text(
-            'Самое необходимое',
-            style: TextStyle(color: Colors.black),
-          ),
-        ],
-      ),
-    ],
-                ),
-              ),
-              const Icon(Icons.arrow_forward_ios_rounded),
-            ],
-          ),
+      children: [
+        Container(
+         
+            color: AppColors.white,
+            
+          width: double.infinity,
           
-        ],
+          child: ElevatedButton(
+            
+            style: ElevatedButton.styleFrom(
+              
+              backgroundColor: AppColors.textMadinat,
+              
+              
+             
+            ),
+            onPressed: onPressed,
+  
+            child:  Text(text,
+            style: TextStyles.kvyboru,
+            
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ContWidget extends StatelessWidget {
+  final String image;
+  final String text;
+  const ContWidget({
+    super.key,
+    required this.image,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Image.asset(image),
+            Padding(
+              padding: const EdgeInsets.only(left: 10, right: 100),
+              child: Row(
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(text),
+                      const Text(
+                        AppTexts.samoe,
+                        style: TextStyles.zaTur,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const Icon(Icons.arrow_forward_ios_rounded),
+          ],
+        ),
+      ],
     );
   }
 }

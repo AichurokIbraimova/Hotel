@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tz2/carousel_widget.dart';
+import 'package:tz2/ex.dart';
 import 'package:tz2/hotel_page.dart';
 import 'package:tz2/theme.dart';
+import 'package:tz2/theme/app_colors.dart';
+import 'package:tz2/theme/app_text_styles.dart';
+import 'package:tz2/theme/app_texts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,11 +35,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF6F6F9),
+      backgroundColor: AppColors.cont,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         centerTitle: true,
-        title: const Text('Отель'),
+        title: const Text(AppTexts.hotel,
+        
+        style: TextStyles.hotel,),
       ),
       body: SingleChildScrollView(
         child: Padding(

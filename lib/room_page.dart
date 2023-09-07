@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:tz2/booking_page.dart';
+import 'package:tz2/carousel_widget.dart';
+import 'package:tz2/hotel_page.dart';
+import 'package:tz2/theme/app_colors.dart';
+import 'package:tz2/theme/app_text_styles.dart';
+import 'package:tz2/theme/app_texts.dart';
 
 class RoomPage extends StatefulWidget {
   const RoomPage({super.key});
@@ -11,88 +17,124 @@ class _RoomPageState extends State<RoomPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF6F6F9),
+      backgroundColor: AppColors.cont,
       appBar: AppBar(
-        backgroundColor: const Color(0xffFFFFFF),
-        title: const Text('Steigenberger Makadi'),
+        backgroundColor: AppColors.white,
+        title: const Text(
+          AppTexts.makadi,
+          style: TextStyles.hotel,
+        ),
       ),
-      body: Container(
-        padding: EdgeInsetsDirectional.all(16),
-        width: double.infinity,
-        color: Colors.white,
-        child: Column(
-          children: [
-      Image.asset('assets/images/image2.png'),
-      Text('Стандартный с видом на бассейн или сад'),
-SizedBox(height: 8,),
-      Row(
-              children: [
-                Container(
-                  width: 235,
-                  height: 19,
-                  // color: Color(0xffFFA800) ,
-                  child: const Row(
-                    children: [
-                      Text('Все включено'),
-                      Text(
-                        'Кондиционер',
-                        style: TextStyle(
-                         // color: Color(0xff828796),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsetsDirectional.all(16),
+          width: double.infinity,
+          color: AppColors.white,
+          child: Column(
+            children: [
+              CarouselWidget(
+                urls: [
+                  "https://www.atorus.ru/sites/default/files/upload/image/News/56871/%D1%80%D0%B8%D0%BA%D1%81%D0%BE%D1%81%20%D1%81%D0%B8%D0%B3%D0%B5%D0%B9%D1%82.jpg",
+                  "https://q.bstatic.com/xdata/images/hotel/max1024x768/267647265.jpg?k=c8233ff42c39f9bac99e703900a866dfbad8bcdd6740ba4e594659564e67f191&o=",
+                  "https://worlds-trip.ru/wp-content/uploads/2022/10/white-hills-resort-5.jpeg",
+                ],
+              ),
+              Text(
+                AppTexts.standart,
+                style: TextStyles.standart,
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Row(
+                children: [
+                  Container(
+                    width: 235,
+                    height: 19,
+                    //color: AppColors.cont1,
+                    child: const Row(
+                      children: [
+                        Text(
+                          AppTexts.vsevkl,
+                          style: TextStyles.zaTur,
                         ),
-                      ),
-                    ],
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          AppTexts.kondicioner,
+                          style: TextStyles.zaTur,
+                        ),
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: AppColors.cont1),
                   ),
-                  decoration: BoxDecoration(
+                ],
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 192,
+                    height: 29,
+                    child: Row(
+                      children: [
+                        Text(AppTexts.podr, style: TextStyles.podr),
+                        Icon(
+                          Icons.arrow_forward_ios_outlined,
+                          color: AppColors.textMadinat,
+                        )
+                      ],
+                    ),
+                    decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),
-                      color: const Color(0xff828796)),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 8,
-            ),
-Column(
-  children: [
-    Container(
-      width: 192,
-      height: 29,
-      child: Row(
-        children: [
-          Text('Подробнее о номере',
-          style: TextStyle(color: Color.fromRGBO(13, 114, 255, 1), fontSize: 16, fontWeight: FontWeight.w500),), Icon(Icons.arrow_forward_ios_outlined, 
-          color: Color.fromRGBO(13, 114, 255, 1))
-        ],
-      ),
-      decoration: BoxDecoration(
-        color: Color(0xffE7F1FF),
-        
-      ),
-      
-    ),
-    SizedBox(
-      height: 30,
-    ),
-    Row(children: [
-      Text('186 600 ₽'), Text('за 7 ночей с перелётом')
-    ],)
-  ],
-),
-
-      Text('')
-      // Container(
-      //   width: 120,
-      //   height: 19,
-      //   color: Color.fromRGBO(130, 135, 150, 1),
-      //   child: Row(mainAxisAlignment: MainAxisAlignment.start,
-      //   crossAxisAlignment: CrossAxisAlignment.start,
-      //     children: [
-      //       Text('Все включено'),Text('Кондиционер'),
-      //     ],
-      //   ),
-        
-      //   ),
-        
-          ],
+                      color: AppColors.podrCont,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  const Row(
+                    children: [
+                      Text(
+                        AppTexts.price,
+                        style: TextStyles.ot,
+                      ),
+                      Text(
+                        AppTexts.za7,
+                        style: TextStyles.zaTur,
+                      )
+                    ],
+                  )
+                ],
+              ),
+              CustomButton(
+                text: AppTexts.vybrat,
+                onPressed: () {
+                 Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const BookingPage()));
+                },
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Column(
+                children: [
+                  Container(
+                      color: AppColors.white,
+                      child: Image.asset('assets/images/image3.png')),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
